@@ -1,0 +1,26 @@
+{
+  "name": "pixel-units",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Karibash/pixel-units.git"
+  },
+  "author": "Karibash",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Karibash/pixel-units/issues"
+  },
+  "homepage": "https://github.com/Karibash/pixel-units",
+  "devDependencies": {
+    "typescript": "^4.1.2"
+  }
+}
