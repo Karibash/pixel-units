@@ -2,6 +2,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import buble from '@rollup/plugin-buble';
 import { terser } from 'rollup-plugin-terser';
+import ttypescript from 'ttypescript'
 import typescript from "rollup-plugin-typescript2";
 import dts from 'rollup-plugin-dts';
 
@@ -38,6 +39,7 @@ export default [
     plugins: [
       resolve(),
       typescript({
+        typescript: ttypescript,
         useTsconfigDeclarationDir: true,
         tsconfigOverride: {
           compilerOptions: {
