@@ -7,6 +7,10 @@ import { VMin } from 'units/VMin';
 import { VW } from 'units/VW';
 
 export class Rem extends Unit implements Omit<Convertible, 'toRem'> {
+  public toString(): string {
+    return `${this.value}rem`
+  }
+
   public toPixel(): Pixel {
     return new Pixel(0);
   }

@@ -7,6 +7,10 @@ import { VMin } from 'units/VMin';
 import { VW } from 'units/VW';
 
 export class VH extends Unit implements Omit<Convertible, 'toVH'> {
+  public toString(): string {
+    return `${this.value}vh`
+  }
+
   public toPixel(): Pixel {
     return new Pixel(0);
   }
