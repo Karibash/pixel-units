@@ -11,23 +11,38 @@ export class VMax extends Unit implements Omit<Convertible, 'toVMax'> {
     return `${this.value}vmax`
   }
 
-  public toPixel(): Pixel {
-    return new Pixel(0);
+  public toPixel(width: number, height: number): Pixel {
+    const maximum = Math.max(width, height);
+    const pixel = maximum * (this.value / 100);
+    return new Pixel(pixel);
   }
 
-  public toRem(): Rem {
-    return new Rem(0);
+  public toRem(width: number, height: number, rootFontSize: number): Rem {
+    const maximum = Math.max(width, height);
+    const pixel = maximum * (this.value / 100);
+    const rem = pixel / rootFontSize;
+    return new Rem(rem);
   }
 
-  public toVW(): VW {
-    return new VW(0);
+  public toVW(width: number, height: number): VW {
+    const maximum = Math.max(width, height);
+    const pixel = maximum * (this.value / 100);
+    const percentage = (pixel / width) * 100;
+    return new VW(percentage);
   }
 
-  public toVH(): VH {
-    return new VH(0);
+  public toVH(width: number, height: number): VH {
+    const maximum = Math.max(width, height);
+    const pixel = maximum * (this.value / 100);
+    const percentage = (pixel / height) * 100;
+    return new VH(percentage);
   }
 
-  public toVMin(): VMin {
-    return new VMin(0);
+  public toVMin(width: number, height: number): VMin {
+    const maximum = Math.max(width, height);
+    const minimum = Math.min(width, height);
+    const pixel = maximum * (this.value / 100);
+    const percentage = (pixel / minimum) * 100;
+    return new VMin(percentage);
   }
 }
