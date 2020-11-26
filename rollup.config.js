@@ -22,14 +22,12 @@ export default [
         name: pkg.name,
         file: pkg.main,
         format: 'umd',
-        sourcemap: true,
         banner,
       },
       {
         name: pkg.name,
         file: pkg.main.replace('.js', '.min.js'),
         format: 'umd',
-        sourcemap: true,
         plugins: [
           terser(),
         ],
