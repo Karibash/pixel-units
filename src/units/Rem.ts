@@ -11,23 +11,31 @@ export class Rem extends Unit implements Omit<Convertible, 'toRem'> {
     return `${this.value}rem`
   }
 
-  public toPixel(): Pixel {
-    return new Pixel(0);
+  public toPixel(rootFontSize: number): Pixel {
+    return new Pixel(this.value * rootFontSize);
   }
 
-  public toVW(): VW {
-    return new VW(0);
+  public toVW(rootFontSize: number, width: number): VW {
+    const pixel = this.value * rootFontSize;
+    const percentage = (pixel / width) * 100;
+    return new VW(percentage);
   }
 
-  public toVH(): VH {
-    return new VH(0);
+  public toVH(rootFontSize: number, height: number): VH {
+    const pixel = this.value * rootFontSize;
+    const percentage = (pixel / height) * 100;
+    return new VH(percentage);
   }
 
-  public toVMin(): VMin {
-    return new VMin(0);
+  public toVMin(rootFontSize: number, width: number, height: number): VMin {
+    const pixel = this.value * rootFontSize;
+    const percentage = (pixel / Math.min(width, height)) * 100;
+    return new VMin(percentage);
   }
 
-  public toVMax(): VMax {
-    return new VMax(0);
+  public toVMax(rootFontSize: number, width: number, height: number): VMax {
+    const pixel = this.value * rootFontSize;
+    const percentage = (pixel / Math.max(width, height)) * 100;
+    return new VMax(percentage);
   }
 }
