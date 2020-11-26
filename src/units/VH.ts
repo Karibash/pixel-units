@@ -11,23 +11,30 @@ export class VH extends Unit implements Omit<Convertible, 'toVH'> {
     return `${this.value}vh`
   }
 
-  public toPixel(): Pixel {
-    return new Pixel(0);
+  public toPixel(height: number): Pixel {
+    return new Pixel(height * (this.value / 100));
   }
 
-  public toRem(): Rem {
-    return new Rem(0);
+  public toRem(height: number, rootFontSize: number): Rem {
+    const pixel = height * (this.value / 100);
+    return new Rem(pixel / rootFontSize);
   }
 
-  public toVW(): VW {
-    return new VW(0);
+  public toVW(height: number, width: number): VW {
+    const pixel = height * (this.value / 100);
+    const percentage = (pixel / width) * 100;
+    return new VW(percentage);
   }
 
-  public toVMin(): VMin {
-    return new VMin(0);
+  public toVMin(height: number, width: number): VMin {
+    const pixel = height * (this.value / 100);
+    const percentage = (pixel / Math.min(width, height)) * 100;
+    return new VMin(percentage);
   }
 
-  public toVMax(): VMax {
-    return new VMax(0);
+  public toVMax(height: number, width: number): VMax {
+    const pixel = height * (this.value / 100);
+    const percentage = (pixel / Math.max(width, height)) * 100;
+    return new VMax(percentage);
   }
 }
