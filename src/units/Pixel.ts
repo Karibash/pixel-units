@@ -12,7 +12,8 @@ export class Pixel extends Unit implements Omit<Convertible, 'toPixel'> {
   }
 
   public toRem(rootFontSize: number): Rem {
-    return new Rem(this.value / rootFontSize);
+    const rem = this.value / rootFontSize;
+    return new Rem(rem);
   }
 
   public toVW(width: number): VW {

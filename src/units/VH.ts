@@ -12,12 +12,14 @@ export class VH extends Unit implements Omit<Convertible, 'toVH'> {
   }
 
   public toPixel(height: number): Pixel {
-    return new Pixel(height * (this.value / 100));
+    const pixel = height * (this.value / 100);
+    return new Pixel(pixel);
   }
 
   public toRem(height: number, rootFontSize: number): Rem {
     const pixel = height * (this.value / 100);
-    return new Rem(pixel / rootFontSize);
+    const rem = pixel / rootFontSize;
+    return new Rem(rem);
   }
 
   public toVW(height: number, width: number): VW {
