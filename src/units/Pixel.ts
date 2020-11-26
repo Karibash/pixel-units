@@ -11,23 +11,29 @@ export class Pixel extends Unit implements Omit<Convertible, 'toPixel'> {
     return `${this.value}px`
   }
 
-  public toRem(): Rem {
-    return new Rem(0);
+  public toRem(rootFontSize: number): Rem {
+    return new Rem(this.value / rootFontSize);
   }
 
-  public toVW(): VW {
-    return new VW(0);
+  public toVW(width: number): VW {
+    const percentage = (this.value / width) * 100;
+    return new VW(percentage);
   }
 
-  public toVH(): VH {
-    return new VH(0);
+  public toVH(height: number): VH {
+    const percentage = (this.value / height) * 100;
+    return new VH(percentage);
   }
 
-  public toVMin(): VMin {
-    return new VMin(0);
+  public toVMin(width: number, height: number): VMin {
+    const minimum = Math.min(width, height);
+    const percentage = (this.value / minimum) * 100;
+    return new VMin(percentage);
   }
 
-  public toVMax(): VMax {
-    return new VMax(0);
+  public toVMax(width: number, height: number): VMax {
+    const maximum = Math.max(width, height);
+    const percentage = (this.value / maximum) * 100;
+    return new VMax(percentage);
   }
 }
