@@ -1,1 +1,1 @@
-export type Converter<T> = () => T;
+export type Converter<T> = (...args: any) => T;
