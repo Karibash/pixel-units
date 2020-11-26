@@ -11,23 +11,32 @@ export class VW extends Unit implements Omit<Convertible, 'toVW'> {
     return `${this.value}vw`
   }
 
-  public toPixel(): Pixel {
-    return new Pixel(0);
+  public toPixel(width: number): Pixel {
+    const pixel = width * (this.value / 100);
+    return new Pixel(pixel);
   }
 
-  public toRem(): Rem {
-    return new Rem(0);
+  public toRem(width: number, rootFontSize: number): Rem {
+    const pixel = width * (this.value / 100);
+    const rem = pixel / rootFontSize;
+    return new Rem(rem);
   }
 
-  public toVH(): VH {
-    return new VH(0);
+  public toVH(width: number, height: number): VH {
+    const pixel = width * (this.value / 100);
+    const percentage = (pixel / height) * 100;
+    return new VH(percentage);
   }
 
-  public toVMin(): VMin {
-    return new VMin(0);
+  public toVMin(width: number, height: number): VMin {
+    const pixel = width * (this.value / 100);
+    const percentage = (pixel / Math.min(width, height)) * 100;
+    return new VMin(percentage);
   }
 
-  public toVMax(): VMax {
-    return new VMax(0);
+  public toVMax(width: number, height: number): VMax {
+    const pixel = width * (this.value / 100);
+    const percentage = (pixel / Math.max(width, height)) * 100;
+    return new VMax(percentage);
   }
 }
