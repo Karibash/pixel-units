@@ -11,23 +11,38 @@ export class VMin extends Unit implements Omit<Convertible, 'toVMin'> {
     return `${this.value}vmin`
   }
 
-  public toPixel(): Pixel {
-    return new Pixel(0);
+  public toPixel(width: number, height: number): Pixel {
+    const minimum = Math.min(width, height);
+    const pixel = minimum * (this.value / 100);
+    return new Pixel(pixel);
   }
 
-  public toRem(): Rem {
-    return new Rem(0);
+  public toRem(width: number, height: number, rootFontSize: number): Rem {
+    const minimum = Math.min(width, height);
+    const pixel = minimum * (this.value / 100);
+    const rem = pixel / rootFontSize;
+    return new Rem(rem);
   }
 
-  public toVW(): VW {
-    return new VW(0);
+  public toVW(width: number, height: number): VW {
+    const minimum = Math.min(width, height);
+    const pixel = minimum * (this.value / 100);
+    const percentage = (pixel / width) * 100;
+    return new VW(percentage);
   }
 
-  public toVH(): VH {
-    return new VH(0);
+  public toVH(width: number, height: number): VH {
+    const minimum = Math.min(width, height);
+    const pixel = minimum * (this.value / 100);
+    const percentage = (pixel / height) * 100;
+    return new VH(percentage);
   }
 
-  public toVMax(): VMax {
-    return new VMax(0);
+  public toVMax(width: number, height: number): VMax {
+    const maximum = Math.max(width, height);
+    const minimum = Math.min(width, height);
+    const pixel = minimum * (this.value / 100);
+    const percentage = (pixel / maximum) * 100;
+    return new VMax(percentage);
   }
 }
