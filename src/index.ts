@@ -1,6 +1,10 @@
 export {
   findRootFontSize,
   tryFindRootFontSize,
+  findViewHeight,
+  tryFindViewHeight,
+  findViewWidth,
+  tryFindViewWidth,
 } from 'common/helpers';
 export { Pixel } from 'units/Pixel';
 export { Rem } from 'units/Rem';
