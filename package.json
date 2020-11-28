@@ -1,7 +1,12 @@
 {
   "name": "@karibash/pixel-units",
   "version": "1.0.0",
-  "description": "",
+  "description": "Type-safe and mutually convertible pixel units.",
+  "keywords": [
+    "typescript",
+    "pixel",
+    "units"
+  ],
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
