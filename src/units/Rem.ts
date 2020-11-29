@@ -1,5 +1,6 @@
 import { Convertible } from 'common/Convertible';
 import { Unit } from 'common/Unit';
+import { Centimeter } from 'units/Centimeter';
 import { Pixel } from 'units/Pixel';
 import { VH } from 'units/VH';
 import { VMax } from 'units/VMax';
@@ -9,6 +10,12 @@ import { VW } from 'units/VW';
 export class Rem extends Unit implements Omit<Convertible, 'toRem'> {
   public toString(): string {
     return `${this.value}rem`
+  }
+
+  public toCentimeter(rootFontSize: number): Centimeter {
+    const pixel = this.value * rootFontSize;
+    const centimeter = pixel / (96 / 2.54);
+    return new Centimeter(centimeter);
   }
 
   public toPixel(rootFontSize: number): Pixel {

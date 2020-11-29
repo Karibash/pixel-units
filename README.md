@@ -8,7 +8,7 @@
 ### Absolute length units
 
 - [x] px
-- [ ] cm
+- [x] cm
 - [ ] mm
 - [ ] Q
 - [ ] in

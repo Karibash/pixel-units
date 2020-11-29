@@ -1,5 +1,6 @@
 import { Convertible } from 'common/Convertible';
 import { Unit } from 'common/Unit';
+import { Centimeter } from 'units/Centimeter';
 import { Pixel } from 'units/Pixel';
 import { Rem } from 'units/Rem';
 import { VH } from 'units/VH';
@@ -9,6 +10,13 @@ import { VW } from 'units/VW';
 export class VMin extends Unit implements Omit<Convertible, 'toVMin'> {
   public toString(): string {
     return `${this.value}vmin`
+  }
+
+  public toCentimeter(width: number, height: number): Centimeter {
+    const minimum = Math.min(width, height);
+    const pixel = minimum * (this.value / 100);
+    const centimeter = pixel / (96 / 2.54);
+    return new Centimeter(centimeter);
   }
 
   public toPixel(width: number, height: number): Pixel {

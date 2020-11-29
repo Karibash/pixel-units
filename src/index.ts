@@ -6,6 +6,7 @@ export {
   findViewWidth,
   tryFindViewWidth,
 } from 'common/helpers';
+export { Centimeter } from 'units/Centimeter';
 export { Pixel } from 'units/Pixel';
 export { Rem } from 'units/Rem';
 export { VH } from 'units/VH';

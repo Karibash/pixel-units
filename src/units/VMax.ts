@@ -1,5 +1,6 @@
 import { Convertible } from 'common/Convertible';
 import { Unit } from 'common/Unit';
+import { Centimeter } from 'units/Centimeter';
 import { Pixel } from 'units/Pixel';
 import { Rem } from 'units/Rem';
 import { VH } from 'units/VH';
@@ -9,6 +10,13 @@ import { VW } from 'units/VW';
 export class VMax extends Unit implements Omit<Convertible, 'toVMax'> {
   public toString(): string {
     return `${this.value}vmax`
+  }
+
+  public toCentimeter(width: number, height: number): Centimeter {
+    const maximum = Math.max(width, height);
+    const pixel = maximum * (this.value / 100);
+    const centimeter = pixel / (96 / 2.54);
+    return new Centimeter(centimeter);
   }
 
   public toPixel(width: number, height: number): Pixel {

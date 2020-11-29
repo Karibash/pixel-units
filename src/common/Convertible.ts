@@ -1,4 +1,5 @@
 import { Converter } from 'common/Converter';
+import { Centimeter } from 'units/Centimeter';
 import { Pixel } from 'units/Pixel';
 import { Rem } from 'units/Rem';
 import { VH } from 'units/VH';
@@ -7,6 +8,7 @@ import { VMin } from 'units/VMin';
 import { VW } from 'units/VW';
 
 export interface Convertible {
+  toCentimeter: Converter<Centimeter>
   toPixel: Converter<Pixel>;
   toRem: Converter<Rem>;
   toVW: Converter<VW>;
