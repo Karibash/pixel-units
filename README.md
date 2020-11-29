@@ -32,7 +32,7 @@
 The basic usage is as follows:
 
 ```typescript
-import { Pixel, tryFindRootFontSize } from 'pixel-units';
+import { Pixel, tryFindRootFontSize } from '@karibash/pixel-units';
 
 const pixel = new Pixel(32);
 const rem = pixel.toRem(tryFindRootFontSize(16));
