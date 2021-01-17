@@ -8,7 +8,7 @@ import { VMin } from 'units/VMin';
 import { VW } from 'units/VW';
 
 export interface Convertible {
-  toCentimeter: Converter<Centimeter>
+  toCentimeter: Converter<Centimeter>;
   toPixel: Converter<Pixel>;
   toRem: Converter<Rem>;
   toVW: Converter<VW>;
