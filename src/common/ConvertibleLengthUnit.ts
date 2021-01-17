@@ -7,7 +7,7 @@ import { VMax } from 'units/VMax';
 import { VMin } from 'units/VMin';
 import { VW } from 'units/VW';
 
-export interface Convertible {
+export interface ConvertibleLengthUnit {
   toCentimeter: Converter<Centimeter>;
   toPixel: Converter<Pixel>;
   toRem: Converter<Rem>;

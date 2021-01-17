@@ -1,4 +1,4 @@
-import { Convertible } from 'common/Convertible';
+import { ConvertibleLengthUnit } from 'common/ConvertibleLengthUnit';
 import { Unit } from 'common/Unit';
 import { Centimeter } from 'units/Centimeter';
 import { Rem } from 'units/Rem';
@@ -7,7 +7,7 @@ import { VMax } from 'units/VMax';
 import { VMin } from 'units/VMin';
 import { VW } from 'units/VW';
 
-export class Pixel extends Unit implements Omit<Convertible, 'toPixel'> {
+export class Pixel extends Unit implements Omit<ConvertibleLengthUnit, 'toPixel'> {
   public toString(): string {
     return `${this.value}px`
   }

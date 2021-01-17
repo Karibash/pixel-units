@@ -1,4 +1,4 @@
-import { Convertible } from 'common/Convertible';
+import { ConvertibleLengthUnit } from 'common/ConvertibleLengthUnit';
 import { Unit } from 'common/Unit';
 import { Centimeter } from 'units/Centimeter';
 import { Pixel } from 'units/Pixel';
@@ -7,7 +7,7 @@ import { VMax } from 'units/VMax';
 import { VMin } from 'units/VMin';
 import { VW } from 'units/VW';
 
-export class Rem extends Unit implements Omit<Convertible, 'toRem'> {
+export class Rem extends Unit implements Omit<ConvertibleLengthUnit, 'toRem'> {
   public toString(): string {
     return `${this.value}rem`
   }
