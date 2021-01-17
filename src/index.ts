@@ -8,7 +8,7 @@ export {
 } from 'common/helpers';
 export { Unit } from 'common/Unit';
 export { Centimeter } from 'units/Centimeter';
-export { Magnification } from 'units/Magnification.ts';
+export { Magnification } from 'units/Magnification';
 export { Percent } from 'units/Percent';
 export { Pixel } from 'units/Pixel';
 export { Rem } from 'units/Rem';
