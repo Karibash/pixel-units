@@ -27,6 +27,11 @@
 - [ ] ch
 - [ ] lh
 
+### Multiplication units
+
+- [x] percent
+- [x] magnification
+
 ## 👏 Getting Started
 
 The basic usage is as follows:
