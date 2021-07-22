@@ -2,9 +2,9 @@ export const isClient = (): boolean => {
   return typeof document !== 'undefined';
 };
 
-export const getFontSizePixelValue = (element: Element): number | undefined => {
+export const getFontSizePixelValue = (element: Element | undefined): number | undefined => {
   if (!isClient()) return undefined;
-  return parseFloat(getComputedStyle(element).fontSize);
+  return parseFloat(getComputedStyle(element ?? document.documentElement).fontSize);
 };
 
 export const getViewWidthPixelValue = (): number | undefined => {
