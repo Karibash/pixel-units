@@ -9,23 +9,20 @@
 
 - [x] px
 - [x] cm
-- [ ] mm
-- [ ] Q
-- [ ] in
-- [ ] pc
-- [ ] pt
+- [x] mm
+- [x] Q
+- [x] in
+- [x] pc
+- [x] pt
 
 ### Relative length units
 
 - [x] rem
+- [x] em
 - [x] vw
 - [x] vh
 - [x] vmin
 - [x] vmax
-- [ ] em
-- [ ] ex
-- [ ] ch
-- [ ] lh
 
 ### Multiplication units
 
@@ -37,12 +34,12 @@
 The basic usage is as follows:
 
 ```typescript
-import { Pixel, tryFindRootFontSize } from '@karibash/pixel-units';
+import { Unit, convertUnits } from '@karibash/pixel-units';
 
-const pixel = new Pixel(32);
-const rem = pixel.toRem(tryFindRootFontSize(16));
+const pixel: Unit<'px'> = '32px';
+const rem = convertUnits(pixel, 'rem');
 
-console.log(`${rem}`);
+console.log(rem);
 // -> 2rem
 ```
 
