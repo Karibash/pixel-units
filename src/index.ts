@@ -43,14 +43,14 @@ export const convertUnits = <
   }
 
   const remPixel = typeof options?.rem === 'string' ? splitUnitValue(options?.rem) : undefined;
-  const remElement = options?.rem instanceof Element ? options?.rem : document.documentElement;
+  const remElement = typeof options?.rem === 'object' ? options?.rem : document.documentElement;
   const remPixelValue = remPixel ? remPixel.value : getFontSizePixelValue(remElement);
   if (!remPixelValue) {
     throw new TypeError('Failed to get the font size of the root element. Please run it in the browser environment or specify the default size.');
   }
 
   const emPixel = typeof options?.em === 'string' ? splitUnitValue(options?.em) : undefined;
-  const emElement = options?.em instanceof Element ? options?.em : document.documentElement;
+  const emElement = typeof options?.em === 'object' ? options?.em : document.documentElement;
   const emPixelValue = emPixel ? emPixel.value : getFontSizePixelValue(emElement);
   if (!emPixelValue) {
     throw new TypeError('Failed to get the font size of the element. Please run it in the browser environment or specify the default size.');
