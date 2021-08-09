@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "start": "ts-node index.ts"
+  },
+  "dependencies": {
+    "@karibash/pixel-units": "file:../dist",
+    "ts-node": "^10.1.0",
+    "typescript": "^4.3.5"
+  }
+}
