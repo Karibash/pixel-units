@@ -1,6 +1,6 @@
-import { UnitSuffix } from 'defs';
-import { UnitConverterOptions, noConvert } from 'internal/converters';
-import { pixel } from 'internal/converters/pixel';
+import { UnitSuffix } from '@src/defs';
+import { UnitConverterOptions, noConvert } from '@src/internal/converters';
+import { pixel } from '@src/internal/converters/pixel';
 
 const viewMaxToPixel = (value: number, options: UnitConverterOptions): number => {
   return value * Math.max(options.viewWidthPixelValue, options.viewHeightPixelValue) * 100;

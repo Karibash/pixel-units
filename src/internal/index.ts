@@ -1,2 +1,2 @@
-export * from 'internal/converters';
-export * from 'internal/helpers';
+export * from '@src/internal/converters';
+export * from '@src/internal/helpers';

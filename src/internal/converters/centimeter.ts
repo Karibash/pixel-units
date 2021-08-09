@@ -1,7 +1,7 @@
-import { UnitSuffix } from 'defs';
-import { CENTIMETER_PIXEL_VALUE } from 'internal/constants';
-import { UnitConverterOptions, noConvert } from 'internal/converters';
-import { pixel } from 'internal/converters/pixel';
+import { UnitSuffix } from '@src/defs';
+import { CENTIMETER_PIXEL_VALUE } from '@src/internal/constants';
+import { UnitConverterOptions, noConvert } from '@src/internal/converters';
+import { pixel } from '@src/internal/converters/pixel';
 
 const centimeterToPixel = (value: number): number => {
   return value * CENTIMETER_PIXEL_VALUE;

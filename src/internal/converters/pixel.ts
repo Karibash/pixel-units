@@ -1,4 +1,4 @@
-import { UnitSuffix } from 'defs';
+import { UnitSuffix } from '@src/defs';
 import {
   CENTIMETER_PIXEL_VALUE,
   INCH_PIXEL_VALUE,
@@ -6,8 +6,8 @@ import {
   PICA_PIXEL_VALUE,
   POINT_PIXEL_VALUE,
   QUARTER_PIXEL_VALUE
-} from 'internal/constants';
-import { UnitConverterOptions, noConvert } from 'internal/converters';
+} from '@src/internal/constants';
+import { UnitConverterOptions, noConvert } from '@src/internal/converters';
 
 const pixelToCentimeter = (value: number): number => {
   return value / CENTIMETER_PIXEL_VALUE;

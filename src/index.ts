@@ -1,12 +1,12 @@
-import { ConvertArgs, Unit, UnitSuffix } from 'defs';
+import { ConvertArgs, Unit, UnitSuffix } from '@src/defs';
 import {
   getFontSizePixelValue,
   getViewWidthPixelValue,
   getViewHeightPixelValue,
   converterMap,
-} from 'internal';
+} from '@src/internal';
 
-export * from 'defs';
+export * from '@src/defs';
 
 const UNIT_SPLIT_REGEXP = /^((?:[1-9]\d*|0)(?:\.\d+)?)(px|cm|mm|Q|in|pc|pt|rem|em|vw|vh|vmin|vmax|%|)$/;
 export const splitUnitValue = (value: Unit<UnitSuffix>): { value: number, unitSuffix: UnitSuffix } => {
