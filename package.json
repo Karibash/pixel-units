@@ -2,6 +2,7 @@
   "name": "@karibash/pixel-units",
   "version": "2.1.0",
   "description": "Type-safe and mutually convertible pixel units.",
+  "private": true,
   "keywords": [
     "typescript",
     "pixel",
