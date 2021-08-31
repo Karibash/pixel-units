@@ -1,13 +1,17 @@
 import resolve from '@rollup/plugin-node-resolve';
 import { terser } from 'rollup-plugin-terser';
 
-import packageJson from '../package.json';
+const packageJson = require('../package.json');
 
-const external = [...Object.keys(packageJson.devDependencies || {})];
+const dependencies = Object.keys(packageJson.dependencies || {});
+const devDependencies = Object.keys(packageJson.devDependencies || {});
+const peerDependencies = Object.keys(packageJson.peerDependencies || {});
+const buildDependencies = [...dependencies, ...devDependencies, ...peerDependencies];
+
 export default [
   {
     input: `./dist/index.js`,
-    external: external,
+    external: buildDependencies,
     output: {
       file: `./dist/index.cjs.js`,
       format: 'cjs',
@@ -21,7 +25,7 @@ export default [
   },
   {
     input: './dist/index.js',
-    external: external,
+    external: devDependencies,
     output: [
       {
         name: packageJson.name,
