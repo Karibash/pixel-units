@@ -20,6 +20,12 @@ export const splitUnitValue = (value: Unit<UnitSuffix>): { value: number, unitSu
   };
 };
 
+const defaultOptions = {
+  rem: 16,
+  em: 16,
+  viewHeight: 1920,
+  viewWidth: 1080,
+};
 export const convertUnits = <
   FromUnitValue extends Unit<UnitSuffix>,
   ToUnitSuffix extends UnitSuffix,
@@ -47,33 +53,21 @@ export const convertUnits = <
       const remPixel = typeof options?.rem === 'string' ? splitUnitValue(options?.rem) : undefined;
       const remElement = typeof options?.rem === 'object' ? options?.rem : undefined;
       const remPixelValue = remPixel ? remPixel.value : getFontSizePixelValue(remElement);
-      if (!remPixelValue) {
-        throw new TypeError('Failed to get the font size of the root element. Please run it in the browser environment or specify the default size.');
-      }
-      return remPixelValue;
+      return remPixelValue ?? defaultOptions.rem;
     },
     emPixelValue: () => {
       const emPixel = typeof options?.em === 'string' ? splitUnitValue(options?.em) : undefined;
       const emElement = typeof options?.em === 'object' ? options?.em : undefined;
       const emPixelValue = emPixel ? emPixel.value : getFontSizePixelValue(emElement);
-      if (!emPixelValue) {
-        throw new TypeError('Failed to get the font size of the element. Please run it in the browser environment or specify the default size.');
-      }
-      return emPixelValue;
+      return emPixelValue ?? defaultOptions.em;
     },
     viewWidthPixelValue: () => {
       const viewWidthPixelValue = options?.viewWidth ?? getViewWidthPixelValue();
-      if (!viewWidthPixelValue) {
-        throw new TypeError('Failed to get the screen width size. Please run it in the browser environment or specify the default size.');
-      }
-      return viewWidthPixelValue;
+      return viewWidthPixelValue ?? defaultOptions.viewWidth;
     },
     viewHeightPixelValue: () => {
       const viewHeightPixelValue = options?.viewHeight ?? getViewHeightPixelValue();
-      if (!viewHeightPixelValue) {
-        throw new TypeError('Failed to get the screen height size. Please run it in the browser environment or specify the default size.');
-      }
-      return viewHeightPixelValue;
+      return viewHeightPixelValue ?? defaultOptions.viewHeight;
     },
   });
   return `${toUnitValue}${toUnitSuffix}` as Unit<ToUnitSuffix>;
