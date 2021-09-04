@@ -3,7 +3,7 @@ import { UnitConverterOptions, noConvert } from '@src/internal/converters';
 import { pixel } from '@src/internal/converters/pixel';
 
 const viewMaxToPixel = (value: number, options: UnitConverterOptions): number => {
-  return value * Math.max(options.viewWidthPixelValue, options.viewHeightPixelValue) * 100;
+  return value * Math.max(options.viewWidthPixelValue(), options.viewHeightPixelValue()) * 100;
 };
 
 const viewMaxToCentimeter = (value: number, options: UnitConverterOptions): number => {

@@ -34,27 +34,27 @@ const pixelToPoint = (value: number): number => {
 };
 
 const pixelToREM = (value: number, options: UnitConverterOptions): number => {
-  return value / options.remPixelValue;
+  return value / options.remPixelValue();
 };
 
 const pixelToEM = (value: number, options: UnitConverterOptions): number => {
-  return value / options.emPixelValue;
+  return value / options.emPixelValue();
 };
 
 const pixelToViewWidth = (value: number, options: UnitConverterOptions): number => {
-  return value / options.viewWidthPixelValue * 100;
+  return value / options.viewWidthPixelValue() * 100;
 };
 
 const pixelToViewHeight = (value: number, options: UnitConverterOptions): number => {
-  return value / options.viewHeightPixelValue * 100;
+  return value / options.viewHeightPixelValue() * 100;
 };
 
 const pixelToViewMin = (value: number, options: UnitConverterOptions): number => {
-  return value / Math.min(options.viewWidthPixelValue, options.viewHeightPixelValue) * 100;
+  return value / Math.min(options.viewWidthPixelValue(), options.viewHeightPixelValue()) * 100;
 };
 
 const pixelToViewMax = (value: number, options: UnitConverterOptions): number => {
-  return value / Math.max(options.viewWidthPixelValue, options.viewHeightPixelValue) * 100;
+  return value / Math.max(options.viewWidthPixelValue(), options.viewHeightPixelValue()) * 100;
 };
 
 export const pixel = {

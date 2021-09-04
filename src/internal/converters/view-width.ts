@@ -3,7 +3,7 @@ import { UnitConverterOptions, noConvert } from '@src/internal/converters';
 import { pixel } from '@src/internal/converters/pixel';
 
 const viewWidthToPixel = (value: number, options: UnitConverterOptions): number => {
-  return value * options.viewWidthPixelValue;
+  return value * options.viewWidthPixelValue();
 };
 
 const viewWidthToCentimeter = (value: number, options: UnitConverterOptions): number => {

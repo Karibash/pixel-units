@@ -16,10 +16,10 @@ import { viewMin } from '@src/internal/converters/view-min';
 import { viewWidth } from '@src/internal/converters/view-width';
 
 export type UnitConverterOptions = {
-  remPixelValue: number;
-  emPixelValue: number;
-  viewWidthPixelValue: number;
-  viewHeightPixelValue: number;
+  remPixelValue: () => number;
+  emPixelValue: () => number;
+  viewWidthPixelValue: () => number;
+  viewHeightPixelValue: () => number;
 };
 
 export const noConvert = (unitValue: Unit<UnitSuffix>): Unit<UnitSuffix> => {

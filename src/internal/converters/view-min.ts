@@ -3,7 +3,7 @@ import { UnitConverterOptions, noConvert } from '@src/internal/converters';
 import { pixel } from '@src/internal/converters/pixel';
 
 const viewMinToPixel = (value: number, options: UnitConverterOptions): number => {
-  return value * Math.min(options.viewWidthPixelValue, options.viewHeightPixelValue) * 100;
+  return value * Math.min(options.viewWidthPixelValue(), options.viewHeightPixelValue()) * 100;
 };
 
 const viewMinToCentimeter = (value: number, options: UnitConverterOptions): number => {

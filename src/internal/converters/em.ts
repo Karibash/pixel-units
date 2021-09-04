@@ -3,7 +3,7 @@ import { UnitConverterOptions, noConvert } from '@src/internal/converters';
 import { pixel } from '@src/internal/converters/pixel';
 
 const emToPixel = (value: number, options: UnitConverterOptions): number => {
-  return value * options.emPixelValue;
+  return value * options.emPixelValue();
 };
 
 const emToCentimeter = (value: number, options: UnitConverterOptions): number => {

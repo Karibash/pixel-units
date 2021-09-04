@@ -42,30 +42,39 @@ export const convertUnits = <
     throw new TypeError('Invalid value for toUnitSuffix argument');
   }
 
-  const remPixel = typeof options?.rem === 'string' ? splitUnitValue(options?.rem) : undefined;
-  const remElement = typeof options?.rem === 'object' ? options?.rem : undefined;
-  const remPixelValue = remPixel ? remPixel.value : getFontSizePixelValue(remElement);
-  if (!remPixelValue) {
-    throw new TypeError('Failed to get the font size of the root element. Please run it in the browser environment or specify the default size.');
-  }
-
-  const emPixel = typeof options?.em === 'string' ? splitUnitValue(options?.em) : undefined;
-  const emElement = typeof options?.em === 'object' ? options?.em : undefined;
-  const emPixelValue = emPixel ? emPixel.value : getFontSizePixelValue(emElement);
-  if (!emPixelValue) {
-    throw new TypeError('Failed to get the font size of the element. Please run it in the browser environment or specify the default size.');
-  }
-
-  const viewWidthPixelValue = options?.viewWidth ?? getViewWidthPixelValue();
-  if (!viewWidthPixelValue) {
-    throw new TypeError('Failed to get the screen width size. Please run it in the browser environment or specify the default size.');
-  }
-
-  const viewHeightPixelValue = options?.viewHeight ?? getViewHeightPixelValue();
-  if (!viewHeightPixelValue) {
-    throw new TypeError('Failed to get the screen height size. Please run it in the browser environment or specify the default size.');
-  }
-
-  const toUnitValue = converter(fromValue, { remPixelValue, emPixelValue, viewWidthPixelValue, viewHeightPixelValue });
+  const toUnitValue = converter(fromValue, {
+    remPixelValue: () => {
+      const remPixel = typeof options?.rem === 'string' ? splitUnitValue(options?.rem) : undefined;
+      const remElement = typeof options?.rem === 'object' ? options?.rem : undefined;
+      const remPixelValue = remPixel ? remPixel.value : getFontSizePixelValue(remElement);
+      if (!remPixelValue) {
+        throw new TypeError('Failed to get the font size of the root element. Please run it in the browser environment or specify the default size.');
+      }
+      return remPixelValue;
+    },
+    emPixelValue: () => {
+      const emPixel = typeof options?.em === 'string' ? splitUnitValue(options?.em) : undefined;
+      const emElement = typeof options?.em === 'object' ? options?.em : undefined;
+      const emPixelValue = emPixel ? emPixel.value : getFontSizePixelValue(emElement);
+      if (!emPixelValue) {
+        throw new TypeError('Failed to get the font size of the element. Please run it in the browser environment or specify the default size.');
+      }
+      return emPixelValue;
+    },
+    viewWidthPixelValue: () => {
+      const viewWidthPixelValue = options?.viewWidth ?? getViewWidthPixelValue();
+      if (!viewWidthPixelValue) {
+        throw new TypeError('Failed to get the screen width size. Please run it in the browser environment or specify the default size.');
+      }
+      return viewWidthPixelValue;
+    },
+    viewHeightPixelValue: () => {
+      const viewHeightPixelValue = options?.viewHeight ?? getViewHeightPixelValue();
+      if (!viewHeightPixelValue) {
+        throw new TypeError('Failed to get the screen height size. Please run it in the browser environment or specify the default size.');
+      }
+      return viewHeightPixelValue;
+    },
+  });
   return `${toUnitValue}${toUnitSuffix}` as Unit<ToUnitSuffix>;
 };
