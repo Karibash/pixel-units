@@ -1,6 +1,6 @@
 {
   "name": "@karibash/pixel-units",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "Type-safe and mutually convertible pixel units.",
   "private": true,
   "keywords": [
