@@ -45,31 +45,3 @@ export type ConvertLengthUnitArgsOptions = {
   viewWidth?: Unit<'px'>;
   viewHeight?: Unit<'px'>;
 };
-
-export type ConvertLengthUnitArgs<
-  FromUnitValue extends Unit<LengthUnitSuffix>,
-  ToUnitSuffix extends LengthUnitSuffix,
-  > = [
-  fromUnitValue: FromUnitValue,
-  toUnitSuffix: ToUnitSuffix,
-  options?: ConvertLengthUnitArgsOptions,
-];
-
-export type ConvertMultiplicationUnitArgs<
-  FromUnitValue extends Unit<MultiplicationUnitSuffix>,
-  ToUnitSuffix extends MultiplicationUnitSuffix,
-  > = [
-  fromUnitValue: FromUnitValue,
-  toUnitSuffix: ToUnitSuffix,
-];
-
-export type ConvertArgs<FromUnitValue, ToUnitSuffix> =
-  FromUnitValue extends Unit<LengthUnitSuffix>
-    ? ToUnitSuffix extends LengthUnitSuffix
-      ? ConvertLengthUnitArgs<FromUnitValue, ToUnitSuffix>
-      : never
-    : FromUnitValue extends Unit<MultiplicationUnitSuffix>
-      ? ToUnitSuffix extends MultiplicationUnitSuffix
-        ? ConvertMultiplicationUnitArgs<FromUnitValue, ToUnitSuffix>
-        : never
-      : never

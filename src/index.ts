@@ -1,10 +1,5 @@
-import { ConvertArgs, Unit, UnitSuffix } from '@src/defs';
-import {
-  getFontSizePixelValue,
-  getViewWidthPixelValue,
-  getViewHeightPixelValue,
-  converterMap,
-} from '@src/internal';
+import { ConvertLengthUnitArgsOptions, LengthUnitSuffix, MultiplicationUnitSuffix, Unit, UnitSuffix } from '@src/defs';
+import { getFontSizePixelValue, getViewWidthPixelValue, getViewHeightPixelValue, converterMap } from '@src/internal';
 
 export * from '@src/defs';
 
@@ -30,11 +25,13 @@ export const convertUnits = <
   FromUnitValue extends Unit<UnitSuffix>,
   ToUnitSuffix extends UnitSuffix,
 >(
-  ...[
-    fromUnitValue,
-    toUnitSuffix,
-    options,
-  ]: ConvertArgs<FromUnitValue, ToUnitSuffix>
+  fromUnitValue: FromUnitValue,
+  toUnitSuffix: FromUnitValue extends Unit<LengthUnitSuffix>
+    ? LengthUnitSuffix
+    : FromUnitValue extends Unit<MultiplicationUnitSuffix>
+      ? MultiplicationUnitSuffix
+      : never,
+  options?: ConvertLengthUnitArgsOptions,
 ): Unit<ToUnitSuffix> => {
   const { value: fromValue, unitSuffix: fromUnitSuffix } = splitUnitValue(fromUnitValue) ?? {};
 
@@ -70,5 +67,5 @@ export const convertUnits = <
       return viewHeightPixelValue ?? defaultOptions.viewHeight;
     },
   });
-  return `${toUnitValue}${toUnitSuffix}` as Unit<ToUnitSuffix>;
+  return `${toUnitValue}${toUnitSuffix}` as unknown as Unit<ToUnitSuffix>;
 };
